@@ -1,21 +1,17 @@
 "use client";
 
 import { authClient } from "@/auth-client";
-import React from "react";
+import { capitalizeFirst } from "@/helpers";
 
-type GoogleButtonProps = {
+type OAuthButtonProps = {
   redirectTo: string;
+  social: "google" | "apple";
+  logoURL: string;
 };
 
-export default function GoogleButton({ redirectTo }: GoogleButtonProps) {
+function OAuthButton({ redirectTo, social, logoURL }: OAuthButtonProps) {
   return (
     <button
-      onClick={() =>
-        authClient.signIn.social({
-          provider: "google",
-          callbackURL: redirectTo,
-        })
-      }
       className={`
         flex items-center justify-center
         gap-[1em]
@@ -29,10 +25,18 @@ export default function GoogleButton({ redirectTo }: GoogleButtonProps) {
         text-sm font-medium text-gray-700
         transition-colors duration-150
       `}
-      aria-label="Continue with Google"
+      aria-label={`Continue with ${social}`}
+      onClick={() =>
+        authClient.signIn.social({
+          provider: social,
+          callbackURL: redirectTo,
+        })
+      }
     >
-      <img src="/assets/GoogleLogo.svg" width="20" height="8" />
-      <span>Continue with Google</span>
+      <img src={logoURL} width="20" height="8" />
+      <span>Continue with {capitalizeFirst(social)}</span>
     </button>
   );
 }
+
+export default OAuthButton;
