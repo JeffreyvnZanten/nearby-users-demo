@@ -21,7 +21,7 @@ export const auth = betterAuth({
     facebook: {
       clientId: process.env.FACEBOOK_CLIENT_ID as string,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
-      scope: ["public_profile"],
+      scope: ["public_profile", "email"],
     },
   },
   trustedOrigins: [process.env.SITE_URL!],
