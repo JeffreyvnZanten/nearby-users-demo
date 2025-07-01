@@ -1,7 +1,6 @@
 import { auth } from "@/auth";
 import SignIn from "@/components/SignIn";
 import { headers } from "next/headers";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function Home() {

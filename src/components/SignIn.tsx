@@ -1,7 +1,7 @@
 "use client";
 
 import { authClient } from "@/auth-client";
-// import Link from "next/link";
+import Link from "next/link";
 import GoogleButton from "./GoogleButton";
 import CustomInputField from "./CustomInputField";
 import LoginButton from "./LoginButton";
@@ -31,12 +31,9 @@ export default function SignIn() {
 
         <div className="flex flex-row gap-[1em]">
           <strong className="text-gray-400">No Account?</strong>
-          {/* <Link href="/sign-up">
+          <Link href="/sign-up">
             <strong className="text-blue-400">Create One</strong>
-          </Link> */}
-          <a href="/sign-up" className="text-blue-400 font-semibold">
-            Create One
-          </a>
+          </Link>
         </div>
       </div>
     </div>
