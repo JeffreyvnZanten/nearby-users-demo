@@ -26,12 +26,18 @@ function OAuthButton({ redirectTo, social, logoURL }: OAuthButtonProps) {
         transition-colors duration-150
       `}
       aria-label={`Continue with ${social}`}
-      onClick={() =>
-        authClient.signIn.social({
-          provider: social,
-          callbackURL: redirectTo,
-        })
-      }
+      onClick={async () => {
+        try {
+          console.log("Starting Facebook login...");
+          const result = await authClient.signIn.social({
+            provider: "facebook",
+            callbackURL: redirectTo,
+          });
+          console.log("Login result:", result);
+        } catch (error) {
+          console.error("Facebook login error:", error);
+        }
+      }}
     >
       <img src={logoURL} width="20" height="8" />
       <span>Continue with {capitalizeFirst(social)}</span>
