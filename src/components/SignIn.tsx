@@ -7,6 +7,9 @@ import CustomInputField from "./CustomInputField";
 import LoginButton from "./LoginButton";
 
 export default function SignIn() {
+  const SITE_URL = process.env.SITE_URL;
+  const redirectTo = `${SITE_URL}/api/auth/callback/google`;
+
   return (
     <div className="flex flex-col w-full h-screen justify-center items-center">
       <div className="flex flex-col items-center justify-center min-h-[10vh] max-w-[24em] gap-[1em]">
@@ -16,7 +19,7 @@ export default function SignIn() {
           onClick={() =>
             authClient.signIn.social({
               provider: "google",
-              callbackURL: "/",
+              callbackURL: redirectTo,
             })
           }
         />
