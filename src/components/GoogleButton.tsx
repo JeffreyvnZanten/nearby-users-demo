@@ -1,17 +1,21 @@
 "use client";
 
-// AI Generated
+import { authClient } from "@/auth-client";
+import React from "react";
 
-import React, { ButtonHTMLAttributes } from "react";
+type GoogleButtonProps = {
+  redirectTo: string;
+};
 
-interface GoogleButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: () => void;
-}
-
-export default function GoogleButton({ onClick, ...props }: GoogleButtonProps) {
+export default function GoogleButton({ redirectTo }: GoogleButtonProps) {
   return (
     <button
-      onClick={onClick}
+      onClick={() =>
+        authClient.signIn.social({
+          provider: "google",
+          callbackURL: redirectTo,
+        })
+      }
       className={`
         flex items-center justify-center
         bg-white hover:bg-gray-100
@@ -25,7 +29,6 @@ export default function GoogleButton({ onClick, ...props }: GoogleButtonProps) {
         transition-colors duration-150
       `}
       aria-label="Continue with Google"
-      {...props}
     >
       {/* Google “G” logo */}
       <svg
