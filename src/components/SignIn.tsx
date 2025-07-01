@@ -1,4 +1,3 @@
-import { authClient } from "@/auth-client";
 import Link from "next/link";
 import GoogleButton from "./GoogleButton";
 import CustomInputField from "./CustomInputField";
