@@ -14,6 +14,11 @@ export default function SignIn() {
           logoURL="/assets/GoogleLogo.svg"
           redirectTo="/"
         />
+        <OAuthButton
+          social="facebook"
+          logoURL="/assets/GoogleLogo.svg"
+          redirectTo="/"
+        />
 
         <p>or</p>
 

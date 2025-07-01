@@ -5,7 +5,7 @@ import { capitalizeFirst } from "@/helpers";
 
 type OAuthButtonProps = {
   redirectTo: string;
-  social: "google" | "apple";
+  social: "google" | "facebook";
   logoURL: string;
 };
 
